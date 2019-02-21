@@ -1,5 +1,20 @@
 language: node_js
 node_js:
   - iojs
+
 script:
-  npm run lint
+  - worm-scraper download convert scaffold zip
+  - ls -l
+install:
+  npm install -g worm-scraper
+
+
+deploy:
+  provider: releases
+  api_key:
+    secure: "GITHUB OAUTH TOKEN"
+  file: "Worm.epub"
+  skip_cleanup: true
+  on:
+      branch: master
+  
